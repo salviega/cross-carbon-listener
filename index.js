@@ -16,8 +16,7 @@ const scan = 'https://mumbai.polygonscan.com/tx'
 
 const provider = new ethers.providers.JsonRpcProvider(POLYGON_MUMBAI_RPC_URL)
 
-const wallet = new ethers.Wallet(PRIVATE_KEY, provider)
-const signer = wallet.connect(provider)
+const signer = new ethers.Wallet(PRIVATE_KEY, provider)
 
 const calculatorContract = new ethers.Contract(
 	calculatorContractJson.address,
@@ -53,14 +52,27 @@ const callback = async (requestId, flag, args, values, buyer) => {
 	console.debug(object)
 
 	try {
-		const offsetFootprintTx = await carbonContract.offsetFootprint(
+		const gasPrice = await signer.gasPrice()
+		const gasLimit = await carbonContract.estimateGas.offsetFootprint(
 			requestId,
 			flag,
 			args,
 			values,
 			buyer
 		)
-		offsetFootprintTx.wait(1)
+
+		const offsetFootprintTx = await carbonContract.offsetFootprint(
+			requestId,
+			flag,
+			args,
+			values,
+			buyer,
+			{
+				gasPrice,
+				gasLimit
+			}
+		)
+		await offsetFootprintTx.wait(1)
 
 		console.log('\n')
 		console.log('Transaction was successful 🎉')
