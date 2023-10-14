@@ -1,7 +1,7 @@
 import ethers from 'ethers'
 import dotenv from 'dotenv'
-import calculatorContractJson from './assets/json/contracts/Calculator.json'
-import carbonContractJson from './assets/json/contracts/Carbon.json'
+import calculatorContractJson from './assets/json/contracts/Calculator.json' assert { type: 'json' }
+import carbonContractJson from './assets/json/contracts/Carbon.json' assert { type: 'json' }
 dotenv.config()
 
 const { POLYGON_MUMBAI_RPC_URL, PRIVATE_KEY } = process.env
