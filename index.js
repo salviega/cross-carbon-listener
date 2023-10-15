@@ -30,9 +30,10 @@ const carbonContract = new ethers.Contract(
 	signer
 )
 
-const event = 'CarbonFootprintOffset'
+const event = 'CarbonFootprintCalculated'
 
 const callback = async (requestId, flag, args, values, buyer) => {
+	console.log('\n')
 	console.log('requestId: ', requestId)
 	console.log('flag: ', flag)
 	console.log('args: ', args)
@@ -52,24 +53,14 @@ const callback = async (requestId, flag, args, values, buyer) => {
 	console.debug(object)
 
 	try {
-		const gasPrice = await signer.gasPrice()
-		const gasLimit = await carbonContract.estimateGas.offsetFootprint(
-			requestId,
-			flag,
-			args,
-			values,
-			buyer
-		)
-
-		const offsetFootprintTx = await carbonContract.offsetFootprint(
+		const offsetFootprintTx = await carbonContract.offsetCarbonFootprint(
 			requestId,
 			flag,
 			args,
 			values,
 			buyer,
 			{
-				gasPrice,
-				gasLimit
+				gasLimit: 2500000
 			}
 		)
 		await offsetFootprintTx.wait(1)
