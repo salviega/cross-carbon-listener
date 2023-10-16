@@ -1,5 +1,6 @@
 import ethers from 'ethers'
 import dotenv from 'dotenv'
+import { storeMetadata } from './storaData.js'
 import calculatorContractJson from './assets/json/contracts/Calculator.json' assert { type: 'json' }
 import carbonContractJson from './assets/json/contracts/Carbon.json' assert { type: 'json' }
 dotenv.config()
@@ -47,10 +48,14 @@ const callback = async (requestId, flag, args, values, buyer) => {
 		flag,
 		args,
 		values,
-		buyer
+		buyer,
+		IPFSURL
 	}
 
 	console.debug(object)
+
+	const CID = await storeMetadata(object)
+	const tokenURI = `https://w3s.link/ipfs/${CID}`
 
 	try {
 		const offsetFootprintTx = await carbonContract.offsetCarbonFootprint(
@@ -59,6 +64,7 @@ const callback = async (requestId, flag, args, values, buyer) => {
 			args,
 			values,
 			buyer,
+			tokenURI,
 			{
 				gasLimit: 2500000
 			}
