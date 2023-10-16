@@ -1,6 +1,6 @@
 import ethers from 'ethers'
 import dotenv from 'dotenv'
-import { storeMetadata } from './storaData.js'
+import { storeMetadata } from './storeData.js'
 import calculatorContractJson from './assets/json/contracts/Calculator.json' assert { type: 'json' }
 import carbonContractJson from './assets/json/contracts/Carbon.json' assert { type: 'json' }
 dotenv.config()
