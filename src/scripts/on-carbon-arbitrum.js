@@ -1,21 +1,21 @@
 import ethers from 'ethers'
 import dotenv from 'dotenv'
-import carbonContractJson from '../../assets/json/contracts/Carbon.json' assert { type: 'json' }
-import communicatorContractJson from '../../assets/json/contracts/Communicator.json' assert { type: 'json' }
+import carbonContractJson from '../../assets/deployments/arbitrum/Carbon.json' assert { type: 'json' }
+import communicatorContractJson from '../../assets/deployments/arbitrum/Communicator.json' assert { type: 'json' }
 
 dotenv.config()
 
-const { ALBITRUM_GOERLI_RPC_URL, PRIVATE_KEY } = process.env
+const { ARBITRUM_GOERLI_RPC_URL, PRIVATE_KEY } = process.env
 
-if (!ALBITRUM_GOERLI_RPC_URL || !PRIVATE_KEY) {
+if (!ARBITRUM_GOERLI_RPC_URL || !PRIVATE_KEY) {
 	throw new Error(
-		'ALBITRUM_GOERLI_RPC_URL or PRIVATE_KEY not found in .env file'
+		'ARBITRUM_GOERLI_RPC_URL or PRIVATE_KEY not found in .env file'
 	)
 }
 
 const scan = 'https://goerli.arbiscan.io/tx'
 
-const provider = new ethers.providers.JsonRpcProvider(ALBITRUM_GOERLI_RPC_URL)
+const provider = new ethers.providers.JsonRpcProvider(ARBITRUM_GOERLI_RPC_URL)
 
 const signer = new ethers.Wallet(PRIVATE_KEY, provider)
 

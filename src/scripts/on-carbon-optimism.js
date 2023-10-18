@@ -1,7 +1,7 @@
 import ethers from 'ethers'
 import dotenv from 'dotenv'
-import carbonContractJson from '../../assets/json/contracts/Carbon.json' assert { type: 'json' }
-import communicatorContractJson from '../../assets/json/contracts/Communicator.json' assert { type: 'json' }
+import carbonContractJson from '../../assets/deployments/optimism/Carbon.json' assert { type: 'json' }
+import communicatorContractJson from '../../assets/deployments/optimism/Communicator.json' assert { type: 'json' }
 
 dotenv.config()
 

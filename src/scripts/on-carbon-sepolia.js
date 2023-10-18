@@ -5,9 +5,9 @@ import communicatorContractJson from '../../assets/deployments/sepolia/Communica
 
 dotenv.config()
 
-const { SEPOLIA_GOERLI_RPC_URL, PRIVATE_KEY } = process.env
+const { SEPOLIA_RPC_URL, PRIVATE_KEY } = process.env
 
-if (!SEPOLIA_GOERLI_RPC_URL || !PRIVATE_KEY) {
+if (!SEPOLIA_RPC_URL || !PRIVATE_KEY) {
 	throw new Error(
 		'SEPOLIA_GOERLI_RPC_URL or PRIVATE_KEY not found in .env file'
 	)
@@ -15,7 +15,7 @@ if (!SEPOLIA_GOERLI_RPC_URL || !PRIVATE_KEY) {
 
 const scan = 'https://sepolia.etherscan.io/tx'
 
-const provider = new ethers.providers.JsonRpcProvider(SEPOLIA_GOERLI_RPC_URL)
+const provider = new ethers.providers.JsonRpcProvider(SEPOLIA_RPC_URL)
 
 const signer = new ethers.Wallet(PRIVATE_KEY, provider)
 

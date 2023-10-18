@@ -4,7 +4,9 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
+		"start:arbitrum": "nodemon ./src/scripts/on-carbon-arbitrum.js",
 		"start:mumbai": "nodemon ./src/scripts/on-carbon-mumbai.js",
+		"start:optimism": "nodemon ./src/scripts/on-carbon-optimism.js",
 		"start:sepolia": "nodemon ./src/scripts/on-carbon-sepolia.js",
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\""
