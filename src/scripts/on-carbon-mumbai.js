@@ -1,9 +1,8 @@
 import ethers from 'ethers'
 import dotenv from 'dotenv'
 import { storeMetadata } from '../../storeData.js'
-import calculatorContractJson from '../../assets/json/contracts/Calculator.json' assert { type: 'json' }
-import communicatorContractJson from '../../assets/json/contracts/Communicator.json' assert { type: 'json' }
-import carbonContractJson from '../../assets/json/contracts/Carbon.json' assert { type: 'json' }
+import carbonContractJson from '../../assets/deployments/mumbai/Carbon.json' assert { type: 'json' }
+import communicatorContractJson from '../../assets/deployments/mumbai/Communicator.json' assert { type: 'json' }
 
 dotenv.config()
 
@@ -20,12 +19,6 @@ const scan = 'https://mumbai.polygonscan.com/tx'
 const provider = new ethers.providers.JsonRpcProvider(POLYGON_MUMBAI_RPC_URL)
 
 const signer = new ethers.Wallet(PRIVATE_KEY, provider)
-
-const calculatorContract = new ethers.Contract(
-	calculatorContractJson.address,
-	calculatorContractJson.abi,
-	provider
-)
 
 const communicatorContract = new ethers.Contract(
 	communicatorContractJson.address,
@@ -87,7 +80,7 @@ let callback = async (requestId, flag, args, values, buyer) => {
 	}
 }
 
-calculatorContract.on(event, callback)
+carbonContract.on(event, callback)
 
 event = 'ReceivedMessage'
 
