@@ -1,5 +1,5 @@
 {
-	"address": "0x3D3DA53519D461A700F9eE950fA0104328c88CbE",
+	"address": "",
 	"abi": [
 		{
 			"inputs": [
@@ -27,47 +27,6 @@
 			],
 			"name": "InvalidRouter",
 			"type": "error"
-		},
-		{
-			"inputs": [
-				{
-					"internalType": "address",
-					"name": "owner",
-					"type": "address"
-				}
-			],
-			"name": "OwnableInvalidOwner",
-			"type": "error"
-		},
-		{
-			"inputs": [
-				{
-					"internalType": "address",
-					"name": "account",
-					"type": "address"
-				}
-			],
-			"name": "OwnableUnauthorizedAccount",
-			"type": "error"
-		},
-		{
-			"anonymous": false,
-			"inputs": [
-				{
-					"indexed": true,
-					"internalType": "address",
-					"name": "previousOwner",
-					"type": "address"
-				},
-				{
-					"indexed": true,
-					"internalType": "address",
-					"name": "newOwner",
-					"type": "address"
-				}
-			],
-			"name": "OwnershipTransferred",
-			"type": "event"
 		},
 		{
 			"anonymous": false,
@@ -149,27 +108,7 @@
 		},
 		{
 			"inputs": [],
-			"name": "owner",
-			"outputs": [
-				{
-					"internalType": "address",
-					"name": "",
-					"type": "address"
-				}
-			],
-			"stateMutability": "view",
-			"type": "function"
-		},
-		{
-			"inputs": [],
-			"name": "renounceOwnership",
-			"outputs": [],
-			"stateMutability": "nonpayable",
-			"type": "function"
-		},
-		{
-			"inputs": [],
-			"name": "s_lastMessage",
+			"name": "latestMessage",
 			"outputs": [
 				{
 					"internalType": "string",
@@ -182,7 +121,7 @@
 		},
 		{
 			"inputs": [],
-			"name": "s_lastSender",
+			"name": "latestSender",
 			"outputs": [
 				{
 					"internalType": "address",
@@ -191,29 +130,6 @@
 				}
 			],
 			"stateMutability": "view",
-			"type": "function"
-		},
-		{
-			"inputs": [
-				{
-					"internalType": "address",
-					"name": "receiver",
-					"type": "address"
-				},
-				{
-					"internalType": "string",
-					"name": "messageContent",
-					"type": "string"
-				},
-				{
-					"internalType": "uint64",
-					"name": "destinationChainSelector",
-					"type": "uint64"
-				}
-			],
-			"name": "send",
-			"outputs": [],
-			"stateMutability": "nonpayable",
 			"type": "function"
 		},
 		{
@@ -233,19 +149,6 @@
 				}
 			],
 			"stateMutability": "pure",
-			"type": "function"
-		},
-		{
-			"inputs": [
-				{
-					"internalType": "address",
-					"name": "newOwner",
-					"type": "address"
-				}
-			],
-			"name": "transferOwnership",
-			"outputs": [],
-			"stateMutability": "nonpayable",
 			"type": "function"
 		}
 	]

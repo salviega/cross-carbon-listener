@@ -1,7 +1,7 @@
 import ethers from 'ethers'
 import dotenv from 'dotenv'
 import carbonContractJson from '../../assets/deployments/arbitrum/Carbon.json' assert { type: 'json' }
-import communicatorContractJson from '../../assets/deployments/arbitrum/Communicator.json' assert { type: 'json' }
+import receiverContractJson from '../../assets/deployments/arbitrum/Receiver.json' assert { type: 'json' }
 
 dotenv.config()
 
@@ -25,9 +25,9 @@ const carbonContract = new ethers.Contract(
 	signer
 )
 
-const communicatorContract = new ethers.Contract(
-	communicatorContractJson.address,
-	communicatorContractJson.abi,
+const receiverContract = new ethers.Contract(
+	receiverContractJson.address,
+	receiverContractJson.abi,
 	provider
 )
 
@@ -100,4 +100,4 @@ const callback = async s_lastMessage => {
 	}
 }
 
-communicatorContract.on(event, callback)
+receiverContract.on(event, callback)

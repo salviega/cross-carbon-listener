@@ -3,7 +3,7 @@ import dotenv from 'dotenv'
 import { storeMetadata } from '../../storeData.js'
 import carbonContractJson from '../../assets/deployments/mumbai/Carbon.json' assert { type: 'json' }
 import calculatorContractJson from '../../assets/deployments/mumbai/Calculator.json' assert { type: 'json' }
-import communicatorContractJson from '../../assets/deployments/mumbai/Communicator.json' assert { type: 'json' }
+import receiverContractJson from '../../assets/deployments/mumbai/Receiver.json' assert { type: 'json' }
 
 dotenv.config()
 
@@ -27,9 +27,9 @@ const calculatorContract = new ethers.Contract(
 	provider
 )
 
-const communicatorContract = new ethers.Contract(
-	communicatorContractJson.address,
-	communicatorContractJson.abi,
+const receiverContract = new ethers.Contract(
+	receiverContractJson.address,
+	receiverContractJson.abi,
 	provider
 )
 
@@ -158,4 +158,4 @@ callback = async s_lastMessage => {
 	}
 }
 
-communicatorContract.on(event, callback)
+receiverContract.on(event, callback)
