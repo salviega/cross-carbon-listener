@@ -56,14 +56,13 @@ let callback = async (requestId, flag, args, values, buyer) => {
 		flag,
 		args,
 		values,
-		buyer,
-		IPFSURL
+		buyer
 	}
 
-	console.debug(object)
-
 	const CID = await storeMetadata(object)
-	const tokenURI = `https://w3s.link/ipfs/${CID}`
+	const IPFSURL = `https://w3s.link/ipfs/${CID}`
+
+	console.debug(object)
 
 	try {
 		const offsetFootprintTx = await carbonContract.offsetCarbonFootprint(
@@ -72,7 +71,7 @@ let callback = async (requestId, flag, args, values, buyer) => {
 			args,
 			values,
 			buyer,
-			tokenURI,
+			IPFSURL,
 			{
 				gasLimit: 2500000
 			}

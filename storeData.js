@@ -1,4 +1,4 @@
-import { Web3Storage } from 'web3.storage'
+import { File, Web3Storage } from 'web3.storage'
 import dotenv from 'dotenv'
 
 dotenv.config()
